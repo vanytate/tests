@@ -1,0 +1,17 @@
+util/Authentication.class
+pages/HomePage.class
+pages/DoctorWorkSchedulerPage.class
+pages/ModerationFeedbackPage.class
+pages/DoctorHomePage.class
+util/AuthenticationCreds.class
+pages/LoggedHeaderPatientPage.class
+pages/InitPageFactory.class
+pages/DoctorResultSearchPage.class
+common/HostpitalUrls.class
+pages/ManagerMainPage.class
+util/DriverManager.class
+pages/ManagerHeaderPage.class
+pages/LoginPage.class
+pages/PageInitializer.class
+pages/DoctorPage.class
+util/HomePageTest.class

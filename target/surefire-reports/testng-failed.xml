@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite verbose="0" name="Failed suite [Command line suite]">
+  <test name="Command line test(failed)">
+    <classes>
+      <class name="NotAvailableFeedbackTest">
+        <methods>
+          <include name="insert"/>
+          <include name="checkFeedbacksAvailable"/>
+          <include name="close"/>
+          <include name="checkFeedbacks"/>
+        </methods>
+      </class> <!-- NotAvailableFeedbackTest -->
+      <class name="FeedbackCreateTest">
+        <methods>
+          <include name="delete"/>
+          <include name="bcheckCreatingFeedback"/>
+          <include name="agoToDoctorPageAndCreateFeedback"/>
+        </methods>
+      </class> <!-- FeedbackCreateTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [Command line suite] -->
