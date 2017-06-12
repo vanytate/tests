@@ -6,7 +6,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import util.DriverManager;
 
 public class DoctorWorkSchedulerPage extends PageInitializer {
 
@@ -19,8 +18,8 @@ public class DoctorWorkSchedulerPage extends PageInitializer {
     }
 
     public void doubleClickEvent() {
-        Actions action = new Actions(DriverManager.webDriver);
-        WebDriverWait webDriverWait = new WebDriverWait(DriverManager.webDriver, 345);
+        Actions action = new Actions(webDriver);
+        WebDriverWait webDriverWait = new WebDriverWait(webDriver, 345);
         webDriverWait.until(ExpectedConditions.elementToBeClickable(event));
         action.doubleClick(event).perform();
     }

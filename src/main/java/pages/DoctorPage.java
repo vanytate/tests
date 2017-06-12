@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import util.DriverManager;
 
 public class DoctorPage extends PageInitializer {
 
@@ -14,7 +13,7 @@ public class DoctorPage extends PageInitializer {
     @FindBy(id = "sendFeedback")
     private WebElement sendFeedbackButton;
 
-    @FindBy(xpath = "/html/body/section/div/div[2]/div[3]/div/div/div/div[2]")
+    @FindBy(xpath = "/html/body/section/div/div[2]/div[4]/div/div/div/div[2]")
     private WebElement firstFeedback;
 
     public DoctorPage(WebDriver webDriver) {
@@ -34,14 +33,14 @@ public class DoctorPage extends PageInitializer {
     }
 
     public boolean isNotPresentFeedback() {
-        return DriverManager.webDriver.findElements(By.xpath("/html/body/section/div/div[2]/div[3]/div/div/div/div[2]")).size() == 0;
+        return webDriver.findElements(By.xpath("/html/body/section/div/div[2]/div[3]/div/div/div/div[2]")).size() == 0;
     }
 
     public boolean isNotPresentSendFeedbackButton() {
-        return DriverManager.webDriver.findElements(By.id("sendFeedback")).size() == 0;
+        return webDriver.findElements(By.id("sendFeedback")).size() == 0;
     }
 
-    public boolean isPopAppear() {
-        return DriverManager.webDriver.findElement(By.xpath("//*[contains(text(), 'Feedback is saved')]")).isDisplayed();
+    public boolean isPopUpDisplayed() {
+        return webDriver.findElement(By.id("informSuccess")).isDisplayed();
     }
 }

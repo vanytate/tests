@@ -1,8 +1,11 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class LoggedHeaderPatientPage extends PageInitializer {
 
@@ -26,6 +29,12 @@ public class LoggedHeaderPatientPage extends PageInitializer {
     }
 
     public void logout() {
+        WebDriverWait wait = new WebDriverWait(webDriver, 15);
+        wait.until(
+                ExpectedConditions.not(
+                        ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("informSuccess"))
+                )
+        );
         headerNameLink.click();
         headerDropdownLogoutLink.click();
     }

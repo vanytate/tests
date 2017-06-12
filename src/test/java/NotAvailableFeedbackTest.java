@@ -1,6 +1,9 @@
 import common.HostpitalUrls;
+import org.openqa.selenium.WebDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.DoctorPage;
@@ -17,8 +20,11 @@ public class NotAvailableFeedbackTest {
     private static final String PATIETN_PASSWORD = "1111";
     private static final String DOCTOR_NAME = "Chester";
 
+    private WebDriver webDriver;
+
     @BeforeMethod
     public void insert() {
+        webDriver = DriverManager.create();
         deleteFeedbacks();
         DbUtil.execute(DbUtil.INSERT_INTO_FEEDBACKS);
     }
@@ -37,9 +43,9 @@ public class NotAvailableFeedbackTest {
         logoutPatient();
     }
 
-    @AfterClass
+    @AfterMethod
     public void close() {
-//        DriverManager.webDriver.quit();
+        webDriver.quit();
     }
 
     private static void deleteFeedbacks() {
@@ -47,17 +53,17 @@ public class NotAvailableFeedbackTest {
     }
 
     private DoctorPage goToDoctorPage(String login, String password) {
-        DriverManager.webDriver.get(HostpitalUrls.HOME_PAGE);
+        webDriver.get(HostpitalUrls.HOME_PAGE);
         Authentication authentication = new Authentication();
-        authentication.login(login, password);
-        LoggedHeaderPatientPage header = InitPageFactory.init(LoggedHeaderPatientPage.class);
+        authentication.login(webDriver, login, password);
+        LoggedHeaderPatientPage header = InitPageFactory.init(webDriver, LoggedHeaderPatientPage.class);
         header.searchDoctor(DOCTOR_NAME);
-        DoctorResultSearchPage doctorResultSearchPage = InitPageFactory.init(DoctorResultSearchPage.class);
+        DoctorResultSearchPage doctorResultSearchPage = InitPageFactory.init(webDriver, DoctorResultSearchPage.class);
         doctorResultSearchPage.goToDoctoPage();
-        return InitPageFactory.init(DoctorPage.class);
+        return InitPageFactory.init(webDriver, DoctorPage.class);
     }
 
     private void logoutPatient() {
-        InitPageFactory.init(LoggedHeaderPatientPage.class).logout();
+        InitPageFactory.init(webDriver, LoggedHeaderPatientPage.class).logout();
     }
 }
