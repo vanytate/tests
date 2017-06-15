@@ -1,12 +1,9 @@
 import java.sql.Connection;
 import java.sql.Statement;
 
-/**
- * Created by george on 6/6/17.
- */
 public class DbUtil {
 
-    public static final String INSERT_INTO_FEEDBACKS = "INSERT INTO feedbacks(id, message, consumer_id, producer_id) VALUES (-43, 'mess', 6, 21)";
+    public static final String INSERT_INTO_FEEDBACKS = "INSERT INTO feedbacks(id, message, consumer_id, producer_id) VALUES (-43, '" + Common.FEEDBACK_TEXT + "', 6, 21)";
     public static final String DELETE_FROM_FEEDBACKS = "delete from feedbacks";
 
     public static void execute(String sql) {

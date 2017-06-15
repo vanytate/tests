@@ -1,5 +1,6 @@
 package pages;
 
+import lombok.Getter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -14,6 +15,7 @@ public class DoctorPage extends PageInitializer {
     private WebElement sendFeedbackButton;
 
     @FindBy(xpath = "/html/body/section/div/div[2]/div[4]/div/div/div/div[2]")
+    @Getter
     private WebElement firstFeedback;
 
     public DoctorPage(WebDriver webDriver) {
